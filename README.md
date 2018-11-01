@@ -1,5 +1,9 @@
 # Yahoo! Earnings Calendar Scraper
-Scrapes Yahoo! Finance earnings calendar to get data for a specific date or a date range.
+Scrapes Yahoo! Finance earnings calendar to get data for a specific date or a date range. 
+This is worked on top of the original repo here: https://github.com/wenboyu2/yahoo-earnings-calendar
+Adapted to work for Python 3.
+Added region parameter to allow retrieval of a specific region. Use two digit country code as
+the example below.
 
 ## Installation
 ### Pip
@@ -19,8 +23,8 @@ date_from = datetime.datetime.strptime(
 date_to = datetime.datetime.strptime(
     'May 8 2017  1:00PM', '%b %d %Y %I:%M%p')
 yec = YahooEarningsCalendar()
-print yec.earnings_on(date_from)
-print yec.earnings_between(date_from, date_to)
+print (yec.earnings_on(date_from, 'JP'))
+print (yec.earnings_between(date_from, date_to, 'JP'))
 ```
 
 #### Data attributes
@@ -42,6 +46,6 @@ print yec.earnings_between(date_from, date_to)
 import datetime
 from yahoo_earnings_calendar import YahooEarningsCalendar
 # Returns the next earnings date of BOX in Unix timestamp
-print yec.get_next_earnings_date('box')
+print(yec.get_next_earnings_date('box'))
 # 1508716800
 ```
